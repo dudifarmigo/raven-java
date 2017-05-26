@@ -62,10 +62,10 @@ public class StackTraceInterfaceBinding implements InterfaceBinding<StackTraceIn
             for (Map.Entry<String, Object> varEntry : stackTraceElement.getVars().entrySet()) {
                 String name = varEntry.getKey();
                 Object value = varEntry.getValue();
-                if (value != null) {
-                    generator.writeStringField(name, value.toString());
+                if (value == null) {
+                    generator.writeNullField(name);
                 } else {
-                    generator.writeObjectField(name, null);
+                    generator.writeObjectField(name, value);
                 }
             }
             generator.writeEndObject();
