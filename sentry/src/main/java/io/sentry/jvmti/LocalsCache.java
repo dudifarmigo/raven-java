@@ -1,7 +1,12 @@
 package io.sentry.jvmti;
 
 public final class LocalsCache {
-    private static ThreadLocal<Frame[]> result = new ThreadLocal<>();
+    private static ThreadLocal<Frame[]> result = new ThreadLocal<Frame[]>() {
+        @Override
+        protected Frame[] initialValue() {
+            return new Frame[0];
+        }
+    };
 
     private LocalsCache() {
 

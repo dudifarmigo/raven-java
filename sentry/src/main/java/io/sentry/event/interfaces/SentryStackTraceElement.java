@@ -86,11 +86,12 @@ public class SentryStackTraceElement {
      */
     public static SentryStackTraceElement[] fromStackTraceElements(StackTraceElement[] stackTraceElements) {
         Frame[] localsCache = LocalsCache.getCache();
-
         SentryStackTraceElement[] sentryStackTraceElements = new SentryStackTraceElement[stackTraceElements.length];
+        boolean mayHaveLocals = localsCache.length == stackTraceElements.length;
+
         for (int i = 0; i < stackTraceElements.length; i++) {
             Map<String, Object> vars = null;
-            if (localsCache != null) {
+            if (mayHaveLocals) {
                 Frame frame = localsCache[i];
                 if (!frame.getNamedLocals().isEmpty()) {
                     vars = new HashMap<>();
