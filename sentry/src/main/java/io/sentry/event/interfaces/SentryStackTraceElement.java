@@ -4,7 +4,6 @@ import io.sentry.jvmti.Frame;
 import io.sentry.jvmti.LocalsCache;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -33,6 +32,7 @@ public class SentryStackTraceElement {
      * @param platform Platform name.
      * @param vars Local variables.
      */
+    // CHECKSTYLE.OFF: ParameterNumber
     public SentryStackTraceElement(String module, String function, String fileName, int lineno,
                                    Integer colno, String absPath, String platform, Map<String, Object> vars) {
         this.module = module;
@@ -43,8 +43,8 @@ public class SentryStackTraceElement {
         this.absPath = absPath;
         this.platform = platform;
         this.vars = vars;
-
     }
+    // CHECKSTYLE.ON: ParameterNumber
 
     public String getModule() {
         return module;
