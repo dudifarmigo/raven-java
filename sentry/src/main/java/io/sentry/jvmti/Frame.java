@@ -51,7 +51,7 @@ public final class Frame {
         return namedLocals;
     }
 
-    public class LocalVariable {
+    public static final class LocalVariable {
         final boolean live;
         final String name;
         final String signature;
